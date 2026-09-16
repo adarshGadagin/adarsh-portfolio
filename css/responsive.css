@@ -1,0 +1,248 @@
+/* ==========================================================================
+   PORTFOLIO RESPONSIVE BREAKPOINTS
+   Desktop, Laptop, Tablet, Mobile (375px+)
+   ========================================================================== */
+
+/* --- Tablet & Down (<= 992px) --- */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-visual {
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+    padding: 24px;
+    min-height: 280px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* --- Mobile Breakpoint (<= 768px) --- */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .section {
+    padding: 68px 0;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  /* Navigation on Mobile */
+  .nav-pill-container {
+    padding: 6px 10px 6px 14px;
+  }
+
+  .cmd-palette-btn span.cmd-kbd {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: calc(var(--header-height) + 10px);
+    left: 14px;
+    right: 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+    gap: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all var(--transition-normal);
+    z-index: 99;
+  }
+
+  .nav-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    padding: 11px 14px;
+    border-radius: var(--radius-md);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9375rem;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .nav-link.active {
+    background: var(--badge-bg);
+    color: var(--accent-indigo);
+  }
+
+  /* Command Palette on Mobile */
+  .cmd-palette-overlay {
+    padding-top: 6vh;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .cmd-palette-box {
+    max-height: 85vh;
+  }
+
+  .cmd-palette-results {
+    max-height: 50vh;
+  }
+
+  /* Hero Mobile */
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 36px);
+    padding-bottom: 48px;
+  }
+
+  .hero-name {
+    font-size: 2.35rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+  }
+
+  .hero-bio {
+    font-size: 0.96875rem;
+    margin-bottom: 26px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-scroll-cue {
+    display: none;
+  }
+
+  /* Project Card Mobile */
+  .project-info {
+    padding: 26px 18px;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-actions .btn {
+    width: 100%;
+  }
+
+  /* Contact Mobile */
+  .contact-container {
+    padding: 32px 18px;
+  }
+
+  .email-box {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .copy-btn {
+    justify-content: center;
+  }
+
+  .social-links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer Mobile */
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .back-to-top-btn {
+    bottom: 18px;
+    right: 18px;
+  }
+
+  /* Disable Custom Cursor on Touch Devices */
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none !important;
+  }
+}
+
+/* --- Small Mobile (<= 480px) --- */
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 2.05rem;
+  }
+
+  .status-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interests-grid {
+    gap: 6px;
+  }
+
+  .interest-chip {
+    padding: 6px 10px;
+    font-size: 0.8125rem;
+  }
+}
