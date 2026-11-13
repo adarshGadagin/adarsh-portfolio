@@ -22,10 +22,8 @@ const COMMANDS = [
   { id: 'act-theme-system', title: 'Set Theme to System Preference', category: 'Actions', shortcut: '', action: () => setSystemThemeAction(), icon: 'laptop' },
 
   // Social / Links
-  { id: 'link-github', title: 'Open GitHub Profile', category: 'Links', shortcut: '↗', action: () => window.open('https://github.com', '_blank'), icon: 'github' },
-  { id: 'link-linkedin', title: 'Open LinkedIn Profile', category: 'Links', shortcut: '↗', action: () => window.open('https://linkedin.com', '_blank'), icon: 'linkedin' },
-  { id: 'link-leetcode', title: 'Open LeetCode Profile', category: 'Links', shortcut: '↗', action: () => window.open('https://leetcode.com', '_blank'), icon: 'code' },
-  { id: 'link-x', title: 'Open X (Twitter) Profile', category: 'Links', shortcut: '↗', action: () => window.open('https://x.com', '_blank'), icon: 'twitter' },
+  { id: 'link-github', title: 'Open GitHub Profile', category: 'Links', shortcut: '↗', action: () => window.open('https://github.com/adarshGadagin', '_blank'), icon: 'github' },
+  { id: 'link-linkedin', title: 'Open LinkedIn Profile', category: 'Links', shortcut: '↗', action: () => window.open('https://www.linkedin.com/in/adarsh-gadagin/', '_blank'), icon: 'linkedin' },
 
   // Developer Easter Egg
   { id: 'dev-hud', title: 'Activate Developer Diagnostics (HUD)', category: 'System', shortcut: 'Konami', action: () => openEasterEgg(), icon: 'terminal' }
@@ -42,7 +40,7 @@ function scrollToSection(selector) {
 }
 
 async function copyEmail() {
-  const emailText = document.getElementById('contact-email-text')?.textContent?.trim() || 'adarsh.gadagin.dev@example.com';
+  const emailText = document.getElementById('contact-email-text')?.textContent?.trim() || 'adarshgadagin@gmail.com';
   await copyToClipboard(emailText);
   showToast('Email copied to clipboard!');
 }

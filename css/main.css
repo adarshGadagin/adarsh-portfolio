@@ -1054,7 +1054,6 @@ html[data-theme='light'] .btn-primary:hover {
 }
 
 .skill-card:hover {
-  transform: translateY(-3px);
   border-color: var(--border-strong);
   background: var(--bg-surface-hover);
 }
@@ -1140,7 +1139,6 @@ html[data-theme='light'] .btn-primary:hover {
 
 .project-card:hover {
   border-color: var(--border-strong);
-  transform: translateY(-3px);
   box-shadow: var(--shadow-lg), 0 0 25px -5px var(--glow-color);
 }
 
@@ -1413,7 +1411,6 @@ html[data-theme='light'] .btn-primary:hover {
 }
 
 .certificate-card:hover {
-  transform: translateY(-3px);
   border-color: var(--border-strong);
   box-shadow: var(--shadow-md);
 }
@@ -1617,7 +1614,6 @@ html[data-theme='light'] .btn-primary:hover {
 }
 
 .social-card:hover {
-  transform: translateY(-2px);
   border-color: var(--border-strong);
   background: var(--bg-surface-hover);
 }
@@ -1932,19 +1928,19 @@ html[data-theme='light'] .btn-primary:hover {
 }
 
 /* ==========================================================================
-   DEVELOPER EASTER EGG (KONAMI HUD MODAL)
+   DEVELOPER EASTER EGG (INTERACTIVE UNIX SHELL — ADARSH-OS)
    ========================================================================== */
 .konami-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 3000;
-  padding: 20px;
+  padding: 16px;
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--transition-normal), visibility var(--transition-normal);
@@ -1957,16 +1953,18 @@ html[data-theme='light'] .btn-primary:hover {
 
 .konami-modal {
   width: 100%;
-  max-width: 600px;
-  background: #0D1017;
-  border: 1px solid rgba(129, 140, 248, 0.45);
+  max-width: 680px;
+  background: #090C12;
+  border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: var(--radius-lg);
-  box-shadow: 0 0 50px rgba(99, 102, 241, 0.25);
+  box-shadow: 0 25px 70px -10px rgba(0, 0, 0, 0.9), 0 0 35px -5px rgba(56, 189, 248, 0.22);
   overflow: hidden;
   font-family: var(--font-mono);
   color: #F8FAFC;
-  transform: scale(0.95);
-  transition: transform var(--transition-normal);
+  transform: scale(0.96);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .konami-modal-overlay.active .konami-modal {
@@ -1974,8 +1972,8 @@ html[data-theme='light'] .btn-primary:hover {
 }
 
 .terminal-header {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 12px 18px;
+  background: rgba(18, 24, 38, 0.96);
+  padding: 10px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
@@ -1983,58 +1981,198 @@ html[data-theme='light'] .btn-primary:hover {
   font-size: 0.8125rem;
 }
 
+.terminal-dots-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.t-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.t-dot:hover { opacity: 0.8; }
+.t-dot-red { background: #EF4444; }
+.t-dot-yellow { background: #F59E0B; }
+.t-dot-green { background: #10B981; }
+
 .terminal-title {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--accent-cyan);
+  color: #38BDF8;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
 }
 
 .terminal-close-btn {
   color: #94A3B8;
-  font-size: 0.8125rem;
-  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  padding: 3px 8px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-fast);
 }
 
 .terminal-close-btn:hover {
   color: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.2);
 }
 
 .terminal-body {
-  padding: 24px;
+  padding: 16px 20px;
   font-size: 0.84375rem;
-  line-height: 1.7;
+  line-height: 1.6;
+  max-height: 440px;
+  min-height: 320px;
+  overflow-y: auto;
+  cursor: text;
+  display: flex;
+  flex-direction: column;
 }
 
-.terminal-ascii {
-  color: var(--accent-indigo);
-  font-size: 0.6875rem;
-  line-height: 1.2;
-  margin-bottom: 16px;
-  white-space: pre;
+/* Custom scrollbar for terminal */
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.25);
+  border-radius: 3px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.5);
+}
+
+.terminal-output {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .terminal-line {
-  margin-bottom: 8px;
+  word-break: break-word;
 }
 
-.terminal-prompt {
-  color: var(--accent-emerald);
-  margin-right: 8px;
+.terminal-prompt-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
 }
 
-.terminal-dim {
+.terminal-prompt-prefix {
+  white-space: nowrap;
+  user-select: none;
+}
+
+.t-user { color: #38BDF8; font-weight: 700; }
+.t-path { color: #A78BFA; }
+.t-dollar { color: #34D399; font-weight: 700; margin-left: 2px; }
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 0.84375rem;
+  color: #F8FAFC;
+  caret-color: #38BDF8;
+  padding: 2px 0;
+  width: 100%;
+}
+
+.terminal-footer-hint {
+  background: rgba(14, 18, 28, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 18px;
+  font-size: 0.6875rem;
   color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.terminal-highlight {
-  color: var(--accent-cyan);
-  font-weight: 600;
+.terminal-footer-hint kbd {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #CBD5E1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-mono);
+}
+
+/* Terminal Color Helpers */
+.t-green { color: #34D399; }
+.t-cyan { color: #38BDF8; }
+.t-indigo { color: #818CF8; }
+.t-yellow { color: #FBBF24; }
+.t-red { color: #F87171; }
+.t-dim { color: #94A3B8; }
+.t-bold { font-weight: 700; }
+
+/* Terminal Command Badge (Minimal & Unique) */
+.t-cmd {
+  font-family: var(--font-mono);
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 1px 7px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0.78125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Return Statements / Status Outputs (Sleek hairline left accent) */
+.t-res-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #F8FAFC;
+  background: rgba(52, 211, 153, 0.08);
+  border-left: 3px solid #34D399;
+  padding: 6px 12px;
+  border-radius: 0 6px 6px 0;
+  margin: 6px 0;
+  font-size: 0.8125rem;
+}
+
+.t-res-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FCA5A5;
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid #EF4444;
+  padding: 6px 12px;
+  border-radius: 0 6px 6px 0;
+  margin: 6px 0;
+  font-size: 0.8125rem;
+}
+
+.t-res-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 6px 0;
 }
 
 /* ==========================================================================

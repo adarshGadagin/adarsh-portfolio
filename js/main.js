@@ -53,7 +53,7 @@ function setupEmailCopy() {
   if (!copyBtn || !emailVal) return;
 
   copyBtn.addEventListener('click', async () => {
-    const textToCopy = emailVal.textContent?.trim() || 'adarsh.gadagin.dev@example.com';
+    const textToCopy = emailVal.textContent?.trim() || 'adarshgadagin@gmail.com';
     const success = await copyToClipboard(textToCopy);
 
     if (success) {

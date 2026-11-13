@@ -121,6 +121,353 @@
 }
 
 /* ==========================================================================
+   PAGE PRELOADER (HACKER TERMINAL & MATRIX BACKDROP)
+   ========================================================================== */
+.page-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #030406; /* Solid deep obsidian: completely shields the website */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  overflow: hidden;
+  transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease;
+  will-change: transform, opacity;
+}
+
+/* Theatrical curtain lift upward when loading completes */
+.page-preloader.preloader-done {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* Atmospheric Digital Matrix Rain Canvas in Background */
+.preloader-matrix-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.22;
+}
+
+.preloader-inner {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 480px;
+}
+
+/* Centered Hacker Terminal Window */
+.preloader-terminal-box {
+  background: rgba(10, 14, 22, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px -10px rgba(52, 211, 153, 0.2);
+}
+
+.preloader-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(18, 24, 38, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preloader-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.p-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.p-dot.red { background: #EF4444; }
+.p-dot.yellow { background: #F59E0B; }
+.p-dot.green { background: #10B981; }
+
+.preloader-terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #94A3B8;
+  letter-spacing: 0.04em;
+}
+
+.preloader-terminal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.preloader-brand {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-monogram {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: #FFFFFF;
+  letter-spacing: -0.04em;
+  z-index: 2;
+}
+
+.preloader-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(52, 211, 153, 0.2);
+  border-top-color: #34D399;
+  border-right-color: #38BDF8;
+  animation: preloaderSpin 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+@keyframes preloaderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Real-Time Terminal Diagnostic Log */
+.preloader-log {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: #CBD5E1;
+  text-align: left;
+  line-height: 1.5;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.p-prompt {
+  color: #38BDF8;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.p-green {
+  color: #34D399;
+  font-weight: 600;
+}
+
+.p-dim {
+  color: #94A3B8;
+}
+
+.preloader-progress-wrap {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #34D399, #38BDF8);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.8);
+  transition: width 0.04s linear;
+}
+
+.preloader-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #94A3B8;
+  letter-spacing: 0.05em;
+}
+
+.preloader-status {
+  font-weight: 600;
+  color: #E2E8F0;
+}
+
+.preloader-percent {
+  color: #34D399;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   DYNAMIC INTERACTIVE 3D & RESPONSIVE CARD HOVER
+   ========================================================================== */
+.skill-card,
+.project-card,
+.certificate-card,
+.social-card,
+.education-card {
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  position: relative;
+}
+
+/* Radial Spotlight Glow Follower */
+.skill-card::after,
+.certificate-card::after,
+.social-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.16),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.skill-card:hover::after,
+.certificate-card:hover::after,
+.social-card:hover::after {
+  opacity: 1;
+}
+
+/* Micro-Interactions on Interactive Hover */
+.skill-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.35), 0 0 20px -5px var(--glow-color);
+}
+
+.skill-icon-wrap {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.35s ease;
+}
+
+.skill-card:hover .skill-icon-wrap {
+  transform: translateZ(14px) scale(1.14) rotate(-4deg);
+  border-color: var(--accent-indigo);
+  color: var(--accent-indigo);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.3);
+}
+
+.skill-card:hover .skill-name {
+  color: var(--accent-indigo);
+  transition: color 0.2s ease;
+}
+
+.skill-card:hover .skill-status-tag {
+  border-color: var(--accent-indigo);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Project Card Interactive Dynamics */
+.project-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg), 0 14px 40px -10px rgba(0, 0, 0, 0.4), 0 0 35px -5px var(--glow-color);
+}
+
+.visual-container {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s ease;
+}
+
+.project-card:hover .visual-container {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+}
+
+.project-card:hover .project-type-badge {
+  background: var(--gradient-accent);
+  color: #FFFFFF;
+  border-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Certificate Card Interactive Dynamics */
+.certificate-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.35), 0 0 20px -5px var(--glow-color);
+}
+
+.cert-issuer-badge {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.2s ease,
+              background 0.2s ease;
+}
+
+.certificate-card:hover .cert-issuer-badge {
+  transform: translateZ(12px) scale(1.05);
+  border-color: var(--accent-indigo);
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.certificate-card:hover .cert-status-dot {
+  box-shadow: 0 0 10px var(--accent-emerald);
+  transform: scale(1.3);
+  transition: all 0.3s ease;
+}
+
+/* Social Card Interactive Dynamics */
+.social-card:hover {
+  border-color: var(--accent-indigo);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3), 0 0 20px -5px var(--glow-color);
+}
+
+.social-icon-box {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              color 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.35s ease;
+}
+
+.social-card:hover .social-icon-box {
+  transform: translateZ(14px) scale(1.15) rotate(5deg);
+  border-color: var(--accent-indigo);
+  color: var(--accent-indigo);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.3);
+}
+
+.social-card:hover .social-platform {
+  color: var(--accent-indigo);
+  transition: color 0.2s ease;
+}
+
+/* Mobile & Touch Tactile Feedback */
+@media (hover: none) or (pointer: coarse) {
+  .skill-card:active,
+  .project-card:active,
+  .certificate-card:active,
+  .social-card:active {
+    transform: scale(0.985) !important;
+    transition: transform 0.1s ease !important;
+  }
+}
+
+/* ==========================================================================
    ACCESSIBILITY: PREFERS-REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {

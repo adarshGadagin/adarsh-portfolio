@@ -1,29 +1,38 @@
 # Adarsh Gadagin — Personal Portfolio
 
-A modern, high-polish personal portfolio website for **Adarsh Gadagin**, a 2nd-year B.Tech Computer Science & Engineering student at REVA University, Bangalore.
+[![Website](https://img.shields.io/badge/Portfolio-Live-38BDF8?style=flat-square)](https://github.com/adarshGadagin)
+[![GitHub](https://img.shields.io/badge/GitHub-adarshGadagin-181717?style=flat-square&logo=github)](https://github.com/adarshGadagin)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Adarsh%20Gadagin-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/adarsh-gadagin/)
+[![Email](https://img.shields.io/badge/Email-adarshgadagin%40gmail.com-EA4335?style=flat-square&logo=gmail)](mailto:adarshgadagin@gmail.com)
 
-Built with a dark-first **creative engineering studio** aesthetic inspired by Apple, Stripe, Raycast, and Nothing. Positions Adarsh as a curious, technically grounded student actively building and exploring programming, web development, AI/ML, and systems.
+A modern, high-polish developer portfolio for **Adarsh Gadagin**, a 2nd-year B.Tech Computer Science & Engineering student at REVA University, Bangalore.
+
+Built with a dark-first **creative engineering studio** aesthetic inspired by Apple, Stripe, Raycast, and Nothing. Positions Adarsh as a curious, technically grounded engineer actively building across low-level systems, C/C++, embedded IoT, AI/ML, and modern web architectures.
 
 ---
 
-## ⚡ Features
+## ⚡ Key Features
 
-- **Dual Theme System**: Dark mode (default), clean light mode, and system preference with `localStorage` persistence.
-- **Raycast-Style Command Menu**: Quick access via `⌘K` / `Ctrl+K` or header button for seamless keyboard navigation, instant section jumps, theme switching, and actions.
-- **Developer HUD (Easter Egg)**: Activated via the classic Konami code (`↑ ↑ ↓ ↓ ← → ← → B A`) or Command Menu, rendering an engineering terminal with diagnostics and system status.
-- **Interactive Projects Showcase**:
-  - **2D Graphics Editor in C**: Demonstrates rasterization, geometry primitives, and serialization with an interactive live SVG canvas toolbar.
-  - **Smart Door Access System**: IoT-based embedded access control system using ESP32, RFID verification, and relay solenoid lock with system architecture diagrams.
-- **Verified Credentials**: Showcases IBM SkillsBuild certificates in Python, Data Analysis, and Data Visualization.
-- **High Performance & Accessibility**: 100% vanilla HTML5, CSS3, and modern ES modules. Zero heavy framework bloat. Full keyboard navigation and `prefers-reduced-motion` compliance.
+- **Hacker Terminal Preloader**: Solid obsidian shield with a real-time digital matrix rain canvas and diagnostic boot ticker (`kernel.init()`, memory registration, driver verification, `ACCESS_GRANTED`). Features a theatrical curtain lift with a deliberate delay to ensure zero content overlap.
+- **Interactive UNIX Shell (`adarsh@adarsh-os:~$`)**: Activated via the classic Konami code (`↑ ↑ ↓ ↓ ← → ← → B A`) or Command Menu. A full bash-style CLI emulator with:
+  - Command history navigation (`↑` / `↓`) and `Tab` auto-completion.
+  - Commands: `neofetch`, `skills`, `projects`, `cat <file>`, `ls`, `whoami`, `date`, `matrix`, `theme`, `quote`, `clear`, `sudo`.
+- **Interactive 3D Magnetic Card Physics**: Real-time cursor-tracking perspective tilt (`rotateX`/`rotateY`) on skill cards, projects, certificates, and social cards, paired with dynamic radial spotlight glows and micro-elevations.
+- **Raycast-Style Command Menu**: Quick access via `⌘K` / `Ctrl+K` or header button for keyboard navigation, instant section jumps, actions, and theme switching.
+- **Dual Theme Engine**: Dark mode (default), clean light mode, and system preference with `localStorage` persistence.
+- **Featured Projects**:
+  - [2D Graphics Editor in C](https://github.com/adarshGadagin/2d-graphics-editor): Demonstrates primitive rasterization, geometry manipulation, and file serialization with an interactive live SVG canvas studio.
+  - **Smart Door Access System**: Embedded access control using ESP32, 13.56 MHz RFID verification, SPI/GPIO, and optocoupled relay solenoid lock.
+- **Verified Credentials**: IBM SkillsBuild credentials in Python for Data Science, Data Analysis, and Data Visualization.
+- **Zero-Dependency & Universal Compatibility**: 100% vanilla HTML5, CSS3, and modern JavaScript. Works out of the box via direct double-click (`file:///`) or on any modern static web host.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Markup & Structure**: Semantic HTML5 with complete OpenGraph metadata
-- **Styling**: Vanilla CSS with custom tokens, fluid typography, and responsive breakpoints
-- **Interactions**: Vanilla JavaScript (ES6+ modules)
+- **Markup & Semantics**: Semantic HTML5 with complete OpenGraph metadata
+- **Styling**: Vanilla CSS3 with custom design tokens, fluid typography, and responsive breakpoints
+- **Interactions & 3D Math**: Vanilla JavaScript (ES6+ modular architecture & standalone bundle)
 - **Tooling & Build**: [Vite](https://vitejs.dev/)
 
 ---
@@ -32,24 +41,26 @@ Built with a dark-first **creative engineering studio** aesthetic inspired by Ap
 
 ```text
 portfolio/
-├── index.html              # Production entry point
+├── index.html              # Production entry point (relative paths)
+├── favicon.svg             # Monogram SVG favicon
 ├── css/
-│   ├── main.css            # Design tokens (dark/light), typography, components
-│   ├── animations.css      # Purposeful micro-interactions, reduced-motion rules
-│   └── responsive.css      # Breakpoints (desktop, laptop, tablet, mobile)
+│   ├── main.css            # Design tokens (dark/light), typography, interactive shell
+│   ├── animations.css      # Matrix preloader, 3D card tilt, reduced-motion rules
+│   └── responsive.css      # Fluid breakpoints (desktop, laptop, tablet, mobile)
 ├── js/
-│   ├── main.js             # Application coordinator
-│   ├── loader.js           # Smooth page entrance sequence
+│   ├── bundle.js           # Universal standalone bundle (supports file:// & web servers)
+│   ├── main.js             # Modular application coordinator
+│   ├── loader.js           # Hacker terminal preloader & matrix stream controller
 │   ├── theme.js            # Dark / Light / System theme controller
 │   ├── navigation.js       # Sticky header, scroll-spy, mobile drawer
 │   ├── scroll.js           # Scroll progress bar, back-to-top button
-│   ├── cursor.js           # Custom follower cursor with spring lerp
-│   ├── commandPalette.js   # Command palette (⌘K / Ctrl+K)
-│   ├── konami.js           # Konami code listener & Engineering HUD
-│   ├── animations.js       # Card spotlights, journey sweep, 2D graphics preview
-│   └── utils.js            # Audio feedback synthesizer, clipboard, toast helpers
+│   ├── cursor.js           # Follower cursor with spring lerp
+│   ├── commandPalette.js   # Command palette controller (⌘K / Ctrl+K)
+│   ├── konami.js           # Konami code listener & UNIX Shell engine
+│   ├── animations.js       # 3D magnetic card tilt, spotlight glow, 2D canvas demo
+│   └── utils.js            # Web Audio synthesizer, clipboard, toast helpers
 ├── public/
-│   └── favicon.svg         # Monogram SVG favicon
+│   └── favicon.svg         # Favicon asset
 ├── package.json
 ├── vite.config.js
 └── README.md
@@ -57,8 +68,12 @@ portfolio/
 
 ---
 
-## 🚀 Local Development
+## 🚀 Running Locally
 
+### Option A: Direct Open (No setup required)
+Simply double-click `index.html` or open it in any web browser (`file:///.../index.html`). All styles, scripts, preloaders, and 3D interactions work immediately without needing Node.js or a web server.
+
+### Option B: Local Dev Server with Vite
 ```bash
 # Install dependencies
 npm install
@@ -75,12 +90,35 @@ npm run preview
 
 ---
 
-## 🌐 Deployment on Vercel
+## 🌐 Deployment
 
-1. Push this repository to GitHub.
-2. In Vercel, click **Add New Project** and import your repository.
-3. Vercel automatically detects the Vite framework settings:
-   - **Build Command**: `vite build` (or `npm run build`)
+### Vercel / Netlify / GitHub Pages
+1. Push this repository to GitHub:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/adarshGadagin/adarsh-portfolio.git
+   git push -u origin main
+   ```
+2. Connect your repository to **Vercel** or **Netlify**:
+   - **Framework Preset**: Vite
+   - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-   - **Install Command**: `npm install`
-4. Click **Deploy**.
+3. Click **Deploy**.
+
+---
+
+## 👤 Author
+
+**Adarsh Gadagin**  
+- GitHub: [@adarshGadagin](https://github.com/adarshGadagin)  
+- LinkedIn: [Adarsh Gadagin](https://www.linkedin.com/in/adarsh-gadagin/)  
+- Email: [adarshgadagin@gmail.com](mailto:adarshgadagin@gmail.com)  
+- Institution: REVA University, Bangalore (B.Tech Computer Science & Engineering)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).

@@ -1,10 +1,12 @@
 /* ==========================================================================
    ANIMATIONS & SPOTLIGHT CONTROLLER
-   IntersectionObserver reveals, spotlight glow, journey sweep, graphics demo
+   IntersectionObserver reveals, 3D interactive magnetic card tilt,
+   spotlight glow, journey sweep, and graphics demo
    ========================================================================== */
 
 export function initAnimations() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isPointerFine = window.matchMedia('(pointer: fine)').matches;
 
   // --- 1. Scroll Reveal Animations ---
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -32,26 +34,67 @@ export function initAnimations() {
     });
   }
 
-  // --- 2. Spotlight Mouse Glow on Primary Interactive Cards ---
-  // Restrained to primary project cards, skill cards, and journey cards
-  const spotlightCards = document.querySelectorAll('.skill-card, .project-card, .journey-card');
-
-  spotlightCards.forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    });
-  });
+  // --- 2. Interactive 3D Card Hover & Dynamic Light Tracking ---
+  initInteractiveCards(isPointerFine && !prefersReducedMotion);
 
   // --- 3. Journey Milestones Sweep Animation ---
   initJourneyTimeline();
 
   // --- 4. Interactive 2D Graphics Canvas Demo ---
   initGraphicsEditorDemo();
+}
+
+/**
+ * Interactive 3D card tilt & dynamic spotlight for cards
+ */
+function initInteractiveCards(enableTilt) {
+  const targetCards = document.querySelectorAll(
+    '.skill-card, .project-card, .certificate-card, .social-card, .education-card'
+  );
+
+  targetCards.forEach((card) => {
+    let bounds;
+    let isHovered = false;
+
+    card.addEventListener('mouseenter', () => {
+      isHovered = true;
+      bounds = card.getBoundingClientRect();
+      card.style.transition = 'transform 0.12s ease-out, box-shadow 0.25s ease, border-color 0.25s ease';
+    });
+
+    card.addEventListener('mousemove', (e) => {
+      if (!bounds) bounds = card.getBoundingClientRect();
+
+      const x = e.clientX - bounds.left;
+      const y = e.clientY - bounds.top;
+
+      // Update CSS spotlight coordinates
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+
+      if (!enableTilt) return;
+
+      const centerX = bounds.width / 2;
+      const centerY = bounds.height / 2;
+      const deltaX = (x - centerX) / centerX;
+      const deltaY = (y - centerY) / centerY;
+
+      // Subtle, refined 3D tilt angles (max ~4.5deg for projects, ~6deg for smaller cards)
+      const isProject = card.classList.contains('project-card');
+      const maxTilt = isProject ? 3.5 : 5.5;
+
+      const rotateX = (-deltaY * maxTilt).toFixed(2);
+      const rotateY = (deltaX * maxTilt).toFixed(2);
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.018, 1.018, 1.018) translateZ(4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      isHovered = false;
+      card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0)';
+    });
+  });
 }
 
 /**
