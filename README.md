@@ -90,25 +90,6 @@ npm run preview
 
 ---
 
-## 🌐 Deployment
-
-### Vercel / Netlify / GitHub Pages
-1. Push this repository to GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/adarshGadagin/adarsh-portfolio.git
-   git push -u origin main
-   ```
-2. Connect your repository to **Vercel** or **Netlify**:
-   - **Framework Preset**: Vite
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-3. Click **Deploy**.
-
----
-
 ## 👤 Author
 
 **Adarsh Gadagin**  
