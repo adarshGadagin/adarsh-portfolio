@@ -14,7 +14,7 @@ import { initCommandPalette } from './commandPalette.js';
 import { initKonami } from './konami.js';
 import { copyToClipboard, showToast } from './utils.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   // 1. Initialize Modular Systems
   initLoader();
   initTheme();
@@ -41,7 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'color: #34D399; font-weight: 600; font-family: monospace;',
     'color: #94A3B8; font-family: monospace;'
   );
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 /**
  * Copy email to clipboard with user feedback
