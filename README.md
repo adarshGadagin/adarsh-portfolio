@@ -24,7 +24,6 @@ Built with a dark-first **creative engineering studio** aesthetic inspired by Ap
   - [2D Graphics Editor in C](https://github.com/adarshGadagin/2d-graphics-editor): Demonstrates primitive rasterization, geometry manipulation, and file serialization with an interactive live SVG canvas studio.
   - **Smart Door Access System**: Embedded access control using ESP32, 13.56 MHz RFID verification, SPI/GPIO, and optocoupled relay solenoid lock.
 - **Verified Credentials**: IBM SkillsBuild credentials in Python for Data Science, Data Analysis, and Data Visualization.
-- **Zero-Dependency & Universal Compatibility**: 100% vanilla HTML5, CSS3, and modern JavaScript. Works out of the box via direct double-click (`file:///`) or on any modern static web host.
 
 ---
 
